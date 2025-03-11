@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  gap: 15px;
+  padding: 20px 10px;
+  border-bottom: 1px solid #e9e9e9;
+  color: #333;
+  text-decoration: none;
+}
+.container > img {
+  min-width: 80px;
+  padding-right: 20px;
+  border-right: 1px solid #e9e9e9;
+}
+
+.title {
+  font-size: 18px;
+  line-height: 1.2em;
+  font-weight: bold;
+}
+
+.category {
+  color: crimson;
+  font-size: 16px;
+}
+.rating {
+  font-size: 14px;
+  color: rgb(128, 128, 128);
+}
