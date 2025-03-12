@@ -1,6 +1,7 @@
 import { GoodDataType } from "@/types/types";
 import style from "@/app/good/[id]/page.module.css";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 // 특정한 페이지를 static pgae 로 생성
 export function generateStaticParams() {
