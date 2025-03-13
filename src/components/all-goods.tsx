@@ -5,10 +5,7 @@ export default async function AllGoods() {
   let allGoods: GoodDataType[] = [];
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/products?limit=10`,
-      {
-        next: { revalidate: 10 },
-      }
+      `${process.env.NEXT_PUBLIC_API_URL}/products?limit=10`
     );
     allGoods = await res.json();
     // console.log(allGoods);
