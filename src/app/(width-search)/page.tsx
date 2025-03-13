@@ -1,7 +1,7 @@
 import style from "./page.module.css";
 import AllGoods from "@/components/all-goods";
 import RandomGoods from "@/components/random-goods";
-import GoodItemSkeleton from "@/components/skeleton/good-item-skeleton";
+// import GoodItemSkeleton from "@/components/skeleton/good-item-skeleton";
 import GoodItemSkeletonList from "@/components/skeleton/good-item-skeleton-list";
 import { Suspense } from "react";
 
