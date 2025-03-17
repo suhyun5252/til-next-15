@@ -2,43 +2,37 @@ import { GoodDataType } from "@/types/types";
 import style from "@/app/good/[id]/page.module.css";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import Editor from "@/components/editor";
+import CateList from "@/components/cate-list";
 
-// 특정한 페이지를 static pgae 로 생성
+// 특정한 페이지를 Static Page 로 생성
 export function generateStaticParams() {
   return [{ id: "1" }, { id: "2" }, { id: "3" }, { id: "4" }];
 }
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const { id } = await params;
-  console.log(id);
-
+// 상세화면 컴포넌트
+async function Detail({ id }: { id: string }) {
   let good: GoodDataType | null = null;
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/products/${id}`,
       {
-        next: {
-          revalidate: 3,
-        },
+        next: { tags: [`good-${id}`] },
       }
     );
     good = await res.json();
-    console.log(good);
+    // console.log(good);
   } catch (error) {
     console.log(error);
   }
 
   if (!good) {
+    // 404 띄우기
     notFound();
     // return <div>존재하지 않는 상품입니다.</div>;
   }
 
-  const { title, image, description, rating, category } = good;
-
+  const { title, image, category, rating, description } = good;
   return (
     <div className={style.container}>
       <div className={style.title}>{title}</div>
@@ -50,6 +44,25 @@ export default async function Page({
         Rating: {rating.rate} | {rating.count}
       </div>
       <div className={style.description}>{description}</div>
+    </div>
+  );
+}
+
+// 사용자 평가 입력 컴포넌트
+// 서버액션 처리
+
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  // console.log(id);
+  return (
+    <div>
+      <Detail id={id} />
+      <Editor />
+      <CateList id={id} />
     </div>
   );
 }
