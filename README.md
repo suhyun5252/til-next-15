@@ -120,3 +120,4 @@ export const generateMetadata = async ({
 # Deploy 실행하기(Vercel)
 
 - `npm run build` 후 오류 발견시 제거 및 수정
+- 브랜치 06-deploy 로 변경하자
